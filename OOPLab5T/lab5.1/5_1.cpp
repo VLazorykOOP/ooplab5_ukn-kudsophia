@@ -8,66 +8,66 @@ using namespace std;
 // Визначити конструктори за замовчуванням та iз рiзним числом параметрiв, деструктори, функцiю друку.
 // Визначити функцiї перепризначення щільності (density) і міцності (strength).
 // Написати програму тестування всiх можливостей цього класу.
-    class Liquid {
-    public:
-        // Конструктор з параметрами
-        Liquid(const std::string &name, float density)
-                : name_(name), density_(density) {}
+class Liquid {
+public:
+    // Конструктор з параметрами
+    Liquid(const std::string &name, float density)
+            : name_(name), density_(density) {}
 
-        // Конструктор за замовчуванням
-        Liquid()
-                : name_("Unknown"), density_(0.0f) {}
+    // Конструктор за замовчуванням
+    Liquid()
+            : name_("Unknown"), density_(0.0f) {}
 
-        // Деструктор
-        virtual ~Liquid() {}
+    // Деструктор
+    virtual ~Liquid() {}
 
-        // Функція друку
-        void print() const {
-            std::cout << "Fluid: " << name_ << ", density: " << density_ << std::endl;
-        }
+    // Функція друку
+    void print() const {
+        std::cout << "Fluid: " << name_ << ", density: " << density_ << std::endl;
+    }
 
-        // Функція перепризначення щільності
-        void setDensity(float density) {
-            density_ = density;
-        }
+    // Функція перепризначення щільності
+    void setDensity(float density) {
+        density_ = density;
+    }
 
-    public:
-        std::string name_;
-        float density_;
-    };
+public:
+    std::string name_;
+    float density_;
+};
 
-    class Alcohol : public Liquid {
-    public:
-        // Конструктор з параметрами
-        Alcohol(const std::string &name, float density, float strength)
-                : Liquid(name, density), strength_(strength) {}
+class Alcohol : public Liquid {
+public:
+    // Конструктор з параметрами
+    Alcohol(const std::string &name, float density, float strength)
+            : Liquid(name, density), strength_(strength) {}
 
-        // Конструктор за замовчуванням
-        Alcohol()
-                : Liquid(), strength_(0.0f) {}
+    // Конструктор за замовчуванням
+    Alcohol()
+            : Liquid(), strength_(0.0f) {}
 
-        // Деструктор
-        ~Alcohol() {}
+    // Деструктор
+    ~Alcohol() {}
 
-        // Функція друку
-        void print() const {
-            std::cout << "Alcoholic beverage: " << name_ << ", density: " << density_
-                      << ", strength: " << strength_ << "%" << std::endl;
-        }
+    // Функція друку
+    void print() const {
+        std::cout << "Alcoholic beverage: " << name_ << ", density: " << density_
+                  << ", strength: " << strength_ << "%" << std::endl;
+    }
 
-        // Функція перепризначення міцності
-        void setStrength(float strength) {
-            strength_ = strength;
-        }
+    // Функція перепризначення міцності
+    void setStrength(float strength) {
+        strength_ = strength;
+    }
 
-    private:
-        float strength_;
-    };
+private:
+    float strength_;
+};
 
 int main() {
     // Тестую
-    Liquid water("Water", 1.0f);
-    Alcohol beer("Beer", 1.01f, 4.5f);
+    Liquid water("Вода", 1.0f);
+    Alcohol beer("Пиво", 1.01f, 4.5f);
 
     // Використовую функції
     water.print();  // Liquid: Water, density: 1
